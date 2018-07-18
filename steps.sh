@@ -2,7 +2,9 @@
 
 ## Using helm with RBAC enabled k8s
 
-helm init --service-account tiller
+vim tiller.yml
+
+echo "helm init --service-account tiller"
 
 ### If it's already in place you need to add the upgrade switch
 
@@ -10,7 +12,7 @@ helm init --service-account tiller --upgrade
 
 ## Install cert-manager
 
-helm install --name cert-manager stable/cert-manager
+helm install stable/cert-manager
 
 ### wait for cert-manager to be ready
 
@@ -43,4 +45,19 @@ kubens tools
 kubectl get certificate
 kubectl describe certificate 59s-io
 
+### Checkout the cert
+
+kubectl get secret 59s-io-tls -o yaml
+
+echo <paste in the crt> | base64 -D
+
+## Set up our ingress controller
+
+helm install stable/nginx-ingress
+
+### Set up an ingress rule
+
+vim ingress-rule.yml
+
+kubectl apply -f ingress-rule.yml
 

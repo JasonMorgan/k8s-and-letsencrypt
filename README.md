@@ -11,3 +11,5 @@ Securing web traffic in kubernetes with Let's Encrypt
 * [cert-manager issuers](http://docs.cert-manager.io/en/latest/reference/issuers.html)
 * [cert-manager requester](http://docs.cert-manager.io/en/latest/reference/certificates.html)
 * [kubens & kubectx](https://github.com/ahmetb/kubectx)
+* [intro to helm](https://docs.helm.sh/)
+* [TGIK Podcast](https://github.com/heptio/tgik)
