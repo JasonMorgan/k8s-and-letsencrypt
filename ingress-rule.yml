@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+  generation: 1
+  labels:
+    app: my-app
+  name: my-app
+  namespace: tools
+  uid: dbbf4ba6-89f2-11e8-884a-4201c0a8140a
+spec:
+  rules:
+  - host: ci.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: my-app
+          servicePort: 80
+  tls:
+  - hosts:
+    - ci.example.com
+    secretName: my-cert-tls
+status:
+  loadBalancer:
+    ingress:
+    - ip: 35.224.55.227

@@ -1,0 +1,28 @@
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Issuer
+metadata:
+  name: letsencrypt-staging
+  namespace: tools
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: jmorgan@pivotal.io
+
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: letsencrypt-staging
+
+    # ACME DNS-01 provider configurations
+    dns01:
+
+      # Here we define a list of DNS-01 providers that can solve DNS challenges
+      providers:
+        - name: dns
+          route53:
+            region: us-east-1
+            hostedZoneID: TOTALLYOPTIONALZONEID
+            accessKeyID: SOMEVALIDKEYID
+            secretAccessKeySecretRef:
+              name: route53-credentials-secret
+              key: secret-access-key

@@ -1,0 +1,20 @@
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: my-cert
+  namespace: tools
+spec:
+  secretName: my-cert-tls
+  issuerRef:
+    name: letsencrypt-staging
+  commonName: '*.59s.io'
+  dnsNames:
+  - 59s.io
+  acme:
+    config:
+    - dns01:
+        provider: prod-dns
+      domains:
+      - '*.example.com'
+      - example.com
