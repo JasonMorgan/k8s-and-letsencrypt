@@ -8,9 +8,9 @@ spec:
   secretName: my-cert-tls
   issuerRef:
     name: letsencrypt-staging
-  commonName: '*.59s.io'
+  commonName: '*.example.com'
   dnsNames:
-  - 59s.io
+  - example.com
   acme:
     config:
     - dns01:
